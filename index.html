@@ -21,20 +21,23 @@
 
     <div class="card mx-auto mt-5 px-5 pt-4 pb-4"  style="width: 35rem" id="form">
         <form class="text-white">
-            <div class="mb-3">
+            <div class="mb-3" id="">
               <label for="exampleInputPassword1" class="form-label">Name</label>
-              <input type="text" class="form-control" id="nameInput">
+              <input type="text" class="form-control" id="nameInput" autocomplete="off" required>
+              <p class="pt-1 fs-6 fw-lighter text-center" id="form-requirement">10 characters minimum, your character : <span>0</span></p>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="ageInput">Age</label>
-                <input type="number" class="form-control" id="ageInput">
+                <input type="number" class="form-control" id="ageInput" required>
+                <p class="pt-1 fs-6 fw-lighter text-center" id="form-requirement">minimum : 25, yours : <span></span></p>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="uangSaku">Uang Saku</label>
-                <input type="number" class="form-control" id="uangSaku" max="1000000" min="100000">
+                <input type="number" class="form-control" id="uangSaku" max="1000000" min="100000" required>
+                <p class="pt-1 fs-6 fw-lighter text-center" id="form-requirement">minimum : 100000, maksimum : 1000000, yours : <span></span></p>
             </div>
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
 
@@ -42,14 +45,16 @@
         </form>
     </div>
 
-    <div class="card mx-auto mt-3 py-5 px-5" style="width: 50rem;" id="link-table">
+    <div class="card mx-auto mt-3 mb-3 py-5 px-5" style="width: 50rem;" id="link-table">
       <p class="text-center text-white">Untuk melihat daftar karyawan silahkan klik tombol di bawah ini !</p>
       <button type="button" class="btn btn-primary col-7 mx-auto">Employees List</button>
-
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <!-- My Script -->
+    <script src="script.js"></script>
 </body>
 </html>
