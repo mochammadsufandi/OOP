@@ -55,7 +55,7 @@ class register {
 
     saveDataArray (obj) {
         arrRegister.push(obj);
-        document.dispatchEvent(new Event(RENDER_EVENT));
+        // document.dispatchEvent(new Event(RENDER_EVENT));
     }
 
 }
@@ -70,7 +70,7 @@ class storageSaver {
     saveDataLocal () {
         const parsed = JSON.stringify(arrRegister);
         localStorage.setItem(this.name,parsed);
-        document.dispatchEvent(new Event(SAVED_EVENT));
+        // document.dispatchEvent(new Event(SAVED_EVENT));
     }
 
     loadDataLocal () {
@@ -80,13 +80,15 @@ class storageSaver {
         if(objRegister !== null) {
             for (const obj of objRegister) {
                 arrRegister.push(obj);
+                console.log(arrRegister);
             }
         }
-        document.dispatchEvent(new Event(RENDER_EVENT));
+        // document.dispatchEvent(new Event(RENDER_EVENT));
     }
 }
 
 // variable for form register 
+const storageLocal = new storageSaver(LOCAL_STORAGE);
 const formRegister = document.getElementById('formRegister');
 formRegister.addEventListener('submit', (ev) => {
     ev.preventDefault();
@@ -94,14 +96,17 @@ formRegister.addEventListener('submit', (ev) => {
     const objRegister = new register(nameInput.value,ageInput.value,sakuInput.value);
     objRegister.saveDataArray(objRegister);
 
-    const storageLocal = new storageSaver(LOCAL_STORAGE);
     storageLocal.saveDataLocal();
+    // document.dispatchEvent(new Event(RENDER_EVENT));
 })
 
 
 // For load data 
+document.addEventListener('DOMContentLoaded', () => {
+    document.dispatchEvent(new Event(RENDER_EVENT));
+})
 document.addEventListener(RENDER_EVENT,() => {
-    const storageLocal = new storageSaver(LOCAL_STORAGE);
     storageLocal.loadDataLocal();
+    // arrRegister = [];
 })
 
