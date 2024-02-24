@@ -19,23 +19,26 @@
 <body>
     <h2 class="text-center">List of Employee</h2>
     <div class="card mx-5 mt-5 bg-dark px-5 py-5">
-        <table class="table">
-            <thead class="table-success">
+        <table class="table table-bordered">
+            <thead class="table-success table-striped">
                 <tr>
-                    <th scope="col">No</th>
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Age</th>
                     <th scope="col">Saku</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
+                <tr id="oi">
                     <td>2024648003</td>
                     <td>Mochammad Dwi Putra Sufandi</td>
                     <td>25</td>
                     <td>100000</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-warning">Edit</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
 
             </tbody>
