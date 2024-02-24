@@ -20,7 +20,7 @@
 <body>
 
     <div class="card mx-auto mt-5 px-5 pt-4 pb-4"  style="width: 35rem" id="form">
-        <form class="text-white">
+        <form class="text-white" id="formRegister">
             <div class="mb-3" id="">
               <label for="exampleInputPassword1" class="form-label">Name</label>
               <input type="text" class="form-control" id="nameInput" autocomplete="off" required>
@@ -29,7 +29,7 @@
             <div class="mb-3">
                 <label class="form-label" for="ageInput">Age</label>
                 <input type="number" class="form-control" id="ageInput" required>
-                <p class="pt-1 fs-6 fw-lighter text-center" id="form-requirement">minimum : 25, yours : <span></span></p>
+                <p class="pt-1 fs-6 fw-lighter text-center" id="form-requirement" min="25">minimum : 25, yours : <span></span></p>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="uangSaku">Uang Saku</label>
@@ -37,8 +37,8 @@
                 <p class="pt-1 fs-6 fw-lighter text-center" id="form-requirement">minimum : 100000, maksimum : 1000000, yours : <span></span></p>
             </div>
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              <input type="checkbox" class="form-check-input" id="Check1" required>
+              <label class="form-check-label" for="Check1">Check me out</label>
             </div>
 
             <button type="submit" class="btn btn-success">Submit</button>
