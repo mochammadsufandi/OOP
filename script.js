@@ -3,6 +3,9 @@ const ageInput = document.getElementById('ageInput');
 const sakuInput = document.getElementById('uangSaku');
 const checkBox = document.getElementById('Check1');
 
+// Variable for editing container
+const editContainer = [];
+
 // variable for event to save data in localstorage
 const SAVED_EVENT = 'saved-list-register';
 // variable for event to load data
@@ -33,7 +36,7 @@ sakuInput.addEventListener('keyup', () => {
 
 class register {
     constructor (name,age,saku) {
-        this.id = Math.floor(Math.random()*1000000000); 
+        this.id = +new Date(); 
         this.name = name;
         this.age = age;
         this.saku = saku;
