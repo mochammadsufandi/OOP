@@ -40,17 +40,21 @@ class register {
     }
     
     showData () {
-        const rowElement = document.createElement('tr');
-        rowElement.innerHTML = `
-            <td>2024648003</td>
-            <td>Mochammad Dwi Putra Sufandi</td>
-            <td>25</td>
-            <td>100000</td>
+        arrRegister.forEach((obj) => {
+            const rowElement = document.createElement('tr');
+            rowElement.innerHTML = `
+            <td>${obj.id}</td>
+            <td>${obj.name}</td>
+            <td>${obj.age}</td>
+            <td>${obj.saku}</td>
             <td class="text-center">
                 <button type="button" class="btn btn-warning">Edit</button>
                 <button type="button" class="btn btn-danger">Delete</button>
             </td>
         `
+
+        })
+ 
     }
 
     saveDataArray (obj) {
@@ -96,15 +100,19 @@ formRegister.addEventListener('submit', (ev) => {
     const objRegister = new register(nameInput.value,ageInput.value,sakuInput.value);
     objRegister.saveDataArray(objRegister);
 
-    storageLocal.saveDataLocal();
-    // document.dispatchEvent(new Event(RENDER_EVENT));
+    document.dispatchEvent(new Event(SAVED_EVENT));
 })
 
+// For saving data
+document.addEventListener(SAVED_EVENT, () => {
+    storageLocal.saveDataLocal();
+})
 
-// For load data 
+// For loading data 
 document.addEventListener('DOMContentLoaded', () => {
     document.dispatchEvent(new Event(RENDER_EVENT));
 })
+// For Rendering Data
 document.addEventListener(RENDER_EVENT,() => {
     storageLocal.loadDataLocal();
     // arrRegister = [];
