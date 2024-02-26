@@ -58,16 +58,21 @@ class register {
                 <button type="button" class="btn btn-danger">Delete</button>
             </td>
         `
-
         })
- 
     }
 
     saveDataArray (obj) {
         arrRegister.push(obj);
         // document.dispatchEvent(new Event(RENDER_EVENT));
     }
+}
 
+// Subclass for Editing Register
+class EditRegister extends register {
+    constructor(name,age,saku) {
+        super(name,age,saku);
+        this.id = editContainer[0].id;
+    }
 }
 
 // create a class for saving data in local storage
@@ -105,6 +110,9 @@ class storageSaver {
             editBtn.classList.add('active');
             submitBtn.classList.add('inactive');
         }
+        nameInput.value = editContainer[0][0].name;
+        ageInput.value = editContainer[0][0].age;
+        sakuInput.value = editContainer[0][0].saku;
     }
     deleteEditLocal () {
         localStorage.removeItem(this.name);
@@ -127,6 +135,7 @@ formRegister.addEventListener('submit', (ev) => {
 
 const editBtn = document.getElementById('edit-button');
 editBtn.addEventListener('click', ()=>{
+    const objEditRegister = new EditRegister(nameInput.value,ageInput.value,sakuInput.value);
     document.dispatchEvent(new Event(SAVED_EVENT));
 })
 
@@ -145,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener(RENDER_EVENT,() => {
     storageLocal.loadDataLocal();
     editStorage.loadDataEdit();
+
     // arrRegister = [];
 })
 
