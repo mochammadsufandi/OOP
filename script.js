@@ -3,8 +3,6 @@ const ageInput = document.getElementById('ageInput');
 const sakuInput = document.getElementById('uangSaku');
 const checkBox = document.getElementById('Check1');
 
-// Variable for editing container
-const editContainer = [];
 
 // variable for event to save data in localstorage
 const SAVED_EVENT = 'saved-list-register';
@@ -12,9 +10,14 @@ const SAVED_EVENT = 'saved-list-register';
 const RENDER_EVENT = 'render-list-register';
 // variable for name of local storage
 const LOCAL_STORAGE = 'list-register';
+// variable for editing register
+const EDIT_REGISTER = 'edit-register';
 
 // array container 
 let arrRegister = [];
+
+// Variable for editing container
+const editContainer = [];
 
 nameInput.addEventListener('keyup', () => {
     const formRequirement = document.querySelectorAll('#form-requirement');
@@ -83,19 +86,35 @@ class storageSaver {
     loadDataLocal () {
         const dataJSON = localStorage.getItem(this.name);
         const objRegister = JSON.parse(dataJSON);
-
+      
         if(objRegister !== null) {
             for (const obj of objRegister) {
                 arrRegister.push(obj);
                 console.log(arrRegister);
             }
         }
-        // document.dispatchEvent(new Event(RENDER_EVENT));
+    }
+    loadDataEdit () {
+        const dataJSON = localStorage.getItem(this.name);
+        const editData = JSON.parse(dataJSON);
+        const editBtn = document.getElementById('edit-button');
+        const submitBtn = document.getElementById('submit');
+
+        editContainer.push(editData);
+        if (editData !== null) {
+            editBtn.classList.add('active');
+            submitBtn.classList.add('inactive');
+        }
+    }
+    deleteEditLocal () {
+        localStorage.removeItem(this.name);
     }
 }
 
 // variable for form register 
 const storageLocal = new storageSaver(LOCAL_STORAGE);
+const editStorage = new storageSaver(EDIT_REGISTER);
+
 const formRegister = document.getElementById('formRegister');
 formRegister.addEventListener('submit', (ev) => {
     ev.preventDefault();
@@ -106,9 +125,16 @@ formRegister.addEventListener('submit', (ev) => {
     document.dispatchEvent(new Event(SAVED_EVENT));
 })
 
+const editBtn = document.getElementById('edit-button');
+editBtn.addEventListener('click', ()=>{
+    document.dispatchEvent(new Event(SAVED_EVENT));
+})
+
+
 // For saving data
 document.addEventListener(SAVED_EVENT, () => {
     storageLocal.saveDataLocal();
+    editStorage.deleteEditLocal();
 })
 
 // For loading data 
@@ -118,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // For Rendering Data
 document.addEventListener(RENDER_EVENT,() => {
     storageLocal.loadDataLocal();
+    editStorage.loadDataEdit();
     // arrRegister = [];
 })
 

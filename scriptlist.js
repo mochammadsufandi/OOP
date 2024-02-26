@@ -41,7 +41,7 @@ class storageSaver {
             <td>${obj.age}</td>
             <td>${obj.saku}</td>
             <td class="text-center">
-                <a href="#"><button type="button" class="btn btn-warning" id="edit-btn">Edit</button></a>
+                <a href="index.html"><button type="button" class="btn btn-warning" id="edit-btn">Edit</button></a>
                 <button type="button" class="btn btn-danger">Delete</button>
             </td>`
             tableContent.appendChild(rowElement);

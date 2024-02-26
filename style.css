@@ -5,3 +5,15 @@
 #link-table {
     background-color: rgb(52, 76, 68);
 }
+
+#submit.inactive {
+    display: none;
+}
+
+#edit-button {
+    display: none;
+}
+
+#edit-button.active {
+    display: inline-block;
+}
