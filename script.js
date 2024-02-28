@@ -73,6 +73,21 @@ class EditRegister extends register {
         super(name,age,saku);
         this.id = editContainer[0].id;
     }
+
+    // method
+    findIndex() {
+        for (index in arrRegister) {
+            if(editContainer[0].id === arrRegister[index].id) {
+                return index;
+            }
+        }
+    }
+
+    changeArrRegister(obj) {
+        const index = this.findIndex();
+        arrRegister[index] = obj;
+    }
+
 }
 
 // create a class for saving data in local storage
@@ -105,14 +120,19 @@ class storageSaver {
         const editBtn = document.getElementById('edit-button');
         const submitBtn = document.getElementById('submit');
 
-        editContainer.push(editData);
+        
         if (editData !== null) {
+            for (const objEdit of editData) {
+                editContainer.push(objEdit);
+                console.log(objEdit);
+            }
             editBtn.classList.add('active');
             submitBtn.classList.add('inactive');
+            nameInput.value = editContainer[0].name;
+            ageInput.value = editContainer[0].age;
+            sakuInput.value = editContainer[0].saku;
         }
-        nameInput.value = editContainer[0][0].name;
-        ageInput.value = editContainer[0][0].age;
-        sakuInput.value = editContainer[0][0].saku;
+        
     }
     deleteEditLocal () {
         localStorage.removeItem(this.name);
@@ -133,9 +153,16 @@ formRegister.addEventListener('submit', (ev) => {
     document.dispatchEvent(new Event(SAVED_EVENT));
 })
 
+// menghapus edit register data di local storage
 const editBtn = document.getElementById('edit-button');
-editBtn.addEventListener('click', ()=>{
+editBtn.addEventListener('submit', ()=>{
     const objEditRegister = new EditRegister(nameInput.value,ageInput.value,sakuInput.value);
+    objEditRegister.findIndex();
+    objEditRegister.changeArrRegister(objEditRegister);
+    document.dispatchEvent(new Event(SAVED_EVENT));
+})
+const linkToList = document.getElementById('link-to-list');
+linkToList.addEventListener('click', () => {
     document.dispatchEvent(new Event(SAVED_EVENT));
 })
 
