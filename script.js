@@ -76,7 +76,7 @@ class EditRegister extends register {
 
     // method
     findIndex() {
-        for (index in arrRegister) {
+        for (let index in arrRegister) {
             if(editContainer[0].id === arrRegister[index].id) {
                 return index;
             }
@@ -147,20 +147,22 @@ const formRegister = document.getElementById('formRegister');
 formRegister.addEventListener('submit', (ev) => {
     ev.preventDefault();
 
-    const objRegister = new register(nameInput.value,ageInput.value,sakuInput.value);
-    objRegister.saveDataArray(objRegister);
-
+    // menghapus edit register data di local storage
+    // const editBtn = document.getElementById('edit-button');
+    if (editContainer) {
+        const objEditRegister = new EditRegister(nameInput.value,ageInput.value,sakuInput.value);
+        objEditRegister.findIndex();
+        objEditRegister.changeArrRegister(objEditRegister);
+    }
+        // document.dispatchEvent(new Event(SAVED_EVENT));
+    else {
+        const objRegister = new register(nameInput.value,ageInput.value,sakuInput.value);
+        objRegister.saveDataArray(objRegister);
+    }
     document.dispatchEvent(new Event(SAVED_EVENT));
+    
 })
 
-// menghapus edit register data di local storage
-const editBtn = document.getElementById('edit-button');
-editBtn.addEventListener('submit', ()=>{
-    const objEditRegister = new EditRegister(nameInput.value,ageInput.value,sakuInput.value);
-    objEditRegister.findIndex();
-    objEditRegister.changeArrRegister(objEditRegister);
-    document.dispatchEvent(new Event(SAVED_EVENT));
-})
 const linkToList = document.getElementById('link-to-list');
 linkToList.addEventListener('click', () => {
     document.dispatchEvent(new Event(SAVED_EVENT));
