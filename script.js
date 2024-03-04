@@ -132,6 +132,10 @@ class storageSaver {
             ageInput.value = editContainer[0].age;
             sakuInput.value = editContainer[0].saku;
         }
+        else {
+            editBtn.classList.remove('active');
+            submitBtn.classList.remove('inactive');
+        }
         
     }
     deleteEditLocal () {
@@ -143,25 +147,7 @@ class storageSaver {
 const storageLocal = new storageSaver(LOCAL_STORAGE);
 const editStorage = new storageSaver(EDIT_REGISTER);
 
-const formRegister = document.getElementById('formRegister');
-formRegister.addEventListener('submit', (ev) => {
-    ev.preventDefault();
 
-    // menghapus edit register data di local storage
-    // const editBtn = document.getElementById('edit-button');
-    if (editContainer) {
-        const objEditRegister = new EditRegister(nameInput.value,ageInput.value,sakuInput.value);
-        objEditRegister.findIndex();
-        objEditRegister.changeArrRegister(objEditRegister);
-    }
-        // document.dispatchEvent(new Event(SAVED_EVENT));
-    else {
-        const objRegister = new register(nameInput.value,ageInput.value,sakuInput.value);
-        objRegister.saveDataArray(objRegister);
-    }
-    document.dispatchEvent(new Event(SAVED_EVENT));
-    
-})
 
 const linkToList = document.getElementById('link-to-list');
 linkToList.addEventListener('click', () => {
@@ -177,6 +163,26 @@ document.addEventListener(SAVED_EVENT, () => {
 
 // For loading data 
 document.addEventListener('DOMContentLoaded', () => {
+    const formRegister = document.getElementById('formRegister');
+    formRegister.addEventListener('submit', (ev) => {
+            ev.preventDefault();
+
+            // menghapus edit register data di local storage
+            // const editBtn = document.getElementById('edit-button');
+            if (editContainer[0] !== undefined) {
+                const objEditRegister = new EditRegister(nameInput.value,ageInput.value,sakuInput.value);
+                objEditRegister.findIndex();
+                objEditRegister.changeArrRegister(objEditRegister);
+            }
+                // document.dispatchEvent(new Event(SAVED_EVENT));
+            else {
+                const objRegister = new register(nameInput.value,ageInput.value,sakuInput.value);
+                objRegister.saveDataArray(objRegister);
+            }
+            document.dispatchEvent(new Event(SAVED_EVENT));
+        
+        
+    })
     document.dispatchEvent(new Event(RENDER_EVENT));
 })
 // For Rendering Data
