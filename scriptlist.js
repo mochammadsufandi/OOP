@@ -42,7 +42,7 @@ class storageSaver {
             <td>${obj.saku}</td>
             <td class="text-center">
                 <a href="index.html"><button type="button" class="btn btn-warning" id="edit-btn">Edit</button></a>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-danger" id="delete-btn">Delete</button>
             </td>`
             tableContent.appendChild(rowElement);
         })
@@ -60,15 +60,17 @@ class storageSaver {
                 console.log(registerEdit);
             })
         }
-        registerEdit = [];
-        // document.dispatchEvent(new Event(RENDER_EVENT));
-        
+        registerEdit = []; 
     }
 
-    editProcess () {
-       
+    deleteList () {
+        const deleteBtn = document.querySelectorAll('#delete-btn');
 
-
+        for (const index in arrRegister) {
+            deleteBtn[index].addEventListener('click', () => {
+                window.alert('oiioioi');
+            })
+        }
     }
 }
 
@@ -109,6 +111,7 @@ document.addEventListener(RENDER_EVENT,() => {
       
         // storageLocal.editList();
         editStorage.editList();
+        editStorage.deleteList();
     },2000);
     
     
