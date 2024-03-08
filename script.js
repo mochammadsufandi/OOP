@@ -165,21 +165,21 @@ document.addEventListener(SAVED_EVENT, () => {
 document.addEventListener('DOMContentLoaded', () => {
     const formRegister = document.getElementById('formRegister');
     formRegister.addEventListener('submit', (ev) => {
-            ev.preventDefault();
-
-            // menghapus edit register data di local storage
-            // const editBtn = document.getElementById('edit-button');
-            if (editContainer[0] !== undefined) {
-                const objEditRegister = new EditRegister(nameInput.value,ageInput.value,sakuInput.value);
-                objEditRegister.findIndex();
-                objEditRegister.changeArrRegister(objEditRegister);
-            }
-                // document.dispatchEvent(new Event(SAVED_EVENT));
-            else {
-                const objRegister = new register(nameInput.value,ageInput.value,sakuInput.value);
-                objRegister.saveDataArray(objRegister);
-            }
-            document.dispatchEvent(new Event(SAVED_EVENT));
+        ev.preventDefault();
+        // menghapus edit register data di local storage
+        // const editBtn = document.getElementById('edit-button');
+        if (editContainer[0] !== undefined) {
+            const objEditRegister = new EditRegister(nameInput.value,ageInput.value,sakuInput.value);
+            objEditRegister.findIndex();
+            objEditRegister.changeArrRegister(objEditRegister);
+        }
+            // document.dispatchEvent(new Event(SAVED_EVENT));
+        else {
+            const objRegister = new register(nameInput.value,ageInput.value,sakuInput.value);
+            objRegister.saveDataArray(objRegister);
+        }
+        formRegister.reset();
+        document.dispatchEvent(new Event(SAVED_EVENT));
         
         
     })
