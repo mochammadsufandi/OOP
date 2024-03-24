@@ -83,8 +83,8 @@ class EditRegister extends register {
         }
     }
 
-    changeArrRegister(obj) {
-        const index = this.findIndex();
+    changeArrRegister(obj,index) {
+        // const index = this.findIndex();
         arrRegister[index] = obj;
     }
 
@@ -165,16 +165,17 @@ document.addEventListener(SAVED_EVENT, () => {
 document.addEventListener('DOMContentLoaded', () => {
     const formRegister = document.getElementById('formRegister');
     formRegister.addEventListener('submit', (ev) => {
-        ev.preventDefault();
+         
         // menghapus edit register data di local storage
         // const editBtn = document.getElementById('edit-button');
         if (editContainer[0] !== undefined) {
             const objEditRegister = new EditRegister(nameInput.value,ageInput.value,sakuInput.value);
-            objEditRegister.findIndex();
-            objEditRegister.changeArrRegister(objEditRegister);
+            const index = objEditRegister.findIndex();
+            objEditRegister.changeArrRegister(objEditRegister,index);
         }
             // document.dispatchEvent(new Event(SAVED_EVENT));
         else {
+            ev.preventDefault();
             const objRegister = new register(nameInput.value,ageInput.value,sakuInput.value);
             objRegister.saveDataArray(objRegister);
         }
