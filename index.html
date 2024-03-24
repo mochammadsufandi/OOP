@@ -22,14 +22,14 @@
     <div class="card mx-auto mt-5 px-5 pt-4 pb-4"  style="width: 35rem" id="form">
         <form class="text-white" id="formRegister">
             <div class="mb-3" id="">
-              <label for="exampleInputPassword1" class="form-label">Name</label>
-              <input type="text" class="form-control" id="nameInput" autocomplete="off" required>
+              <label for="nameInput" class="form-label">Name</label>
+              <input type="text" class="form-control" id="nameInput" autocomplete="off" required minlength="10">
               <p class="pt-1 fs-6 fw-lighter text-center" id="form-requirement">10 characters minimum, your character : <span>0</span></p>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="ageInput">Age</label>
-                <input type="number" class="form-control" id="ageInput" required>
-                <p class="pt-1 fs-6 fw-lighter text-center" id="form-requirement" min="25">minimum : 25, yours : <span></span></p>
+                <input type="number" class="form-control" id="ageInput" required min="25">
+                <p class="pt-1 fs-6 fw-lighter text-center" id="form-requirement">minimum : 25, yours : <span></span></p>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="uangSaku">Uang Saku</label>
@@ -50,6 +50,8 @@
       <p class="text-center text-white">Untuk melihat daftar karyawan silahkan klik tombol di bawah ini !</p>
       <a href="list.html" class="btn btn-primary col-7 mx-auto" id="link-to-list">Employees List</a>
     </div>
+
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
