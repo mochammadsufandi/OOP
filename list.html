@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2 class="text-center">List of Employee</h2>
-    <div class="card mx-5 mt-5 bg-dark px-5 py-5">
+    <div class="card mx-5 mt-5 bg-dark px-5 py-3">
+      <h2 class="text-center text-white mb-4">List of Employee</h2>
         <table class="table table-bordered">
             <thead class="table-success table-striped">
                 <tr>
@@ -31,31 +31,69 @@
             </thead>
             <tbody id="table-content">
                 <tr id="">
-                    <td>2024648003</td>
-                    <td>Mochammad Dwi Putra Sufandi</td>
-                    <td>25</td>
-                    <td>100000</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td class="text-center">
                         <button type="button" class="btn btn-warning">Edit</button>
                         <button type="button" class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-
             </tbody>
          
         </table>
     </div>
 
-    <div class="card mx-auto mt-3 mb-3 py-5 px-5" style="width: 50rem;" id="link-table">
-        <p class="text-center text-white">Kembali ke halaman formulir!</p>
-        <a href="index.html" class="btn btn-primary col-7 mx-auto">Form Page</a>
+    <div class="modal" tabindex="-1" id="DeleteModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Attention!!!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure for deleting this register ?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="delete-button">Delete</button>
+            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-       <!-- Bootstrap JS -->
-       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-   
-       <!-- My Script -->
-       <script src="scriptlist.js"></script>
+    <div class="card mx-5 my-3 px-5 py-3 resume">
+      <h3 class="text-center mb-4 text-white">Register Resume</h3>
+      <table class="table table-bordered">
+        
+        <thead class="table-success table-striped">
+          <tr>
+            <th scope="col" class="text-center">Rata-rata umur</th>
+            <th scope="col" class="text-center">Rata-rata uang saku</th>
+          </tr>
+        </thead>
+
+        <tbody id="table-resume">
+          <tr>
+            <!-- <td class="text-center">35</td>
+            <td class="text-center">200000</td> -->
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <div class="card mx-auto mt-3 mb-3 py-5 px-5" style="width: 50rem;" id="link-table">
+      <p class="text-center text-white">Kembali ke halaman formulir!</p>
+      <a href="index.html" class="btn btn-primary col-7 mx-auto">Form Page</a>
+   </div>
+        
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <!-- My Script -->
+    <script src="scriptlist.js"></script>
 </body>
 </html>
