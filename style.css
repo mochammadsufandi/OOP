@@ -17,3 +17,14 @@
 #edit-button.active {
     display: inline-block;
 }
+
+#container-delete-dialog-box {
+    width: 100%;
+    height: 100vh;
+    background-color: aqua ;
+    position: absolute;
+}
+
+.resume {
+    background-color: rgb(41, 51, 31);
+}
