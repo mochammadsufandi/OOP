@@ -80,11 +80,30 @@ class storageSaver {
         let sumSaku = 0;
         let sumAge = 0;
         arrRegister.forEach((obj) => {
-            sumSaku += Number(obj.saku);
-            sumAge += Number(obj.age);
+            if (obj !== undefined) {
+                sumSaku += Number(obj.saku);
+                sumAge += Number(obj.age);
+            }
+            
         })
-        const sakuMean = Math.round(sumSaku/arrRegister.length);
-        const ageMean =  Math.round(sumAge/arrRegister.length);
+        
+        function Mean () {
+            if (arrRegister.length === 0) {
+                // return {sumSaku,sumAge};
+                return {
+                    sakuMean : 0,
+                    ageMean : 0
+                }
+            } else {
+                const sakuMean = Math.round(sumSaku/arrRegister.length);
+                const ageMean =  Math.round(sumAge/arrRegister.length);
+                const MeanValue = {sakuMean,ageMean};
+                return MeanValue;
+            }
+         
+        }
+        
+        const {sakuMean,ageMean} = Mean();
 
         const tableResume = document.getElementById('table-resume');
         tableResume.innerHTML = '';
