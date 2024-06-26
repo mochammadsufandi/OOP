@@ -3,3 +3,7 @@
 
 # exception for .vscode
 .vscode
+
+node_modules
+
+asynchronous.js
