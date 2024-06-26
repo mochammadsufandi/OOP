@@ -1,0 +1,5 @@
+# exception for file with .pdf extension
+*.pdf
+
+# exception for .vscode
+.vscode
